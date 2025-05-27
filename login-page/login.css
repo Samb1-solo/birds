@@ -1,0 +1,43 @@
+.login-page{
+    display: flex;
+    background-color: lightblue;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    
+}
+main{
+    display: flex;
+    margin:0px;
+}
+  
+input{
+    display: block;
+    margin:10px;
+    height:30px;
+    width: 150px;
+    font-size: 20px;
+    padding:10px 50px;
+}
+.btn-container{
+    margin-top:20px;
+}
+.submit-container{
+    background-color: aqua;
+}
+.submit-container{
+    background-color: grey;
+}
+.reset-container{
+    background-color: brown;
+}
+#register{
+    display: block;
+    
+}
+#forgot{
+    display: block;
+}
