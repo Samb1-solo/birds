@@ -1,0 +1,87 @@
+body{
+    
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.page-content{
+    flex-grow: 1;
+    display: grid;
+    grid-template-rows: auto auto;
+    height: 100%;
+    width: 100%;
+   
+}
+.page-section{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    background-color: aliceblue;
+    
+}
+
+#page-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+#page-0{
+ background-color: lightblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 25px;
+    height: 100%;   
+}
+
+#page-1{
+ background-color: lightblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 20px 20px;
+    height: 100%;   
+}
+#page-1:hover{
+   background-color: beige; 
+}
+#page-2{
+ background-color: lightblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 20px 20px;
+    height: 100%;   
+}
+#page-2:hover{
+   background-color: beige; 
+}
+#page-3{
+ background-color: lightblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 20px 20px;
+    height: 100%;   
+}
+#page-3:hover{
+   background-color: beige; 
+}
+#page-4{
+ background-color: lightblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 20px 20px;
+    height: 100%;   
+}
+#page-4:hover{
+   background-color: beige; 
+}
