@@ -42,8 +42,22 @@ checkInput()
 
 if (sessionStorage.getItem("loggedIn") === "true" || getCookie("loggedIn") === "true") {
     console.log("User is still logged in!");
-    output.innerHTML = '<p style="display:inline;">You are still logged in. <a href="birds.html">Go to Birds Page</a> Your login will be valid for an hour since you have logged in.</p>'
-     + '<div id="addButton"><label>Click on the button to contribute</label><button type="button" onClick="addBird()">Add</button></div>';
+    output.innerHTML += `
+    <p style="display:inline;">
+        You are still logged in. 
+        <a href="birds.html">
+            Go to Birds Page
+        </a> 
+        Your login will be valid for an hour since you have logged in.
+    </p>
+     <div id="addButton">
+        <label>
+            Click on the button to contribute
+        </label>
+            <button type="button" onClick="addBird()">
+                Add
+            </button>
+    </div>`;
 }
 
 
@@ -61,11 +75,11 @@ function logout(){
     localStorage.removeItem("authToken");
     sessionStorage.clear();
     alert("You have succesfully logged out!");
-    window.location.href="/index.html";
+    window.location.href="index.html";
 }
 function addBird(){
     alert("Be mindful of what you are adding. This is a personal project!");
-    window.location.href="/add-bird-page.html";
+    window.location.href="add-bird-page.html";
 }
 
 document.getElementById("cancel-bird").addEventListener("click", () => {
