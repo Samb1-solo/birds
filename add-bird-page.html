@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contribution Page</title>
+    <link rel="stylesheet" href="css/contribution-form.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+<header>
+    
+</header>
+<main>
+<form >
+    
+    <div class="contribution-form">
+        <div class="form-input">
+            <h1>Contribution Page</h1>
+            <p>We would love to hear about your bird sightings!</p>
+        </div>
+        <div class="form-input">
+            <label for="user-name">Please tell us your name:</label>
+            <input type="text" placeholder="Your Name" id="user-name" required>
+        </div>
+        <div class="form-input">
+            <label for="bird-name">Please tell us the breed of the bird:</label>
+            <input type="text" placeholder="Breed of the bird" id="bird-name" required>
+        </div>
+        <div class="form-input">
+            <label for="bird-place">Where did you see it:</label>
+            <input type="text" placeholder="Where" id="bird-place" required>
+        </div>
+        <div class="form-input">
+            <label for="bird-info" class="bird-label">Please share some information on the
+                lovely bird that you saw.<br> Let us live this moment with you.
+            </label>
+            <textarea id="bird-info" placeholder="Further information" required></textarea>
+        </div>
+        <div class="form-input">
+            <label for="bird-image">Please upload a photo:</label>
+            <input id="bird-image" type="file" accept="image/*" required>
+        </div>
+        
+        <div class="form-input">
+            
+            <button type="submit" id="submit-bird">
+                Submit
+            </button>
+            <button type="button" id="cancel-bird" href="index.html" onclick="window.location.href='index.html'">
+                Cancel
+            </button>
+        </div>
+        
+    </div>
+</form>
+</main>
+</body>
+</html>
