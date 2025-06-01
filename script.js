@@ -54,11 +54,19 @@ if (sessionStorage.getItem("loggedIn") === "true" || getCookie("loggedIn") === "
         <label>
             Click on the button to contribute
         </label>
-            <button type="button" onClick="addBird()">
+            <button type="button" id="addBird">
                 Add
             </button>
     </div>`;
+setTimeout(() => {
+        const addBirdBtn = document.getElementById("addBird");
+        if (addBirdBtn) {
+            addBirdBtn.addEventListener("click", addBird);
+        }
+    }, 100); // Small delay ensures button exists before adding event    
 }
+
+
 
 
 
