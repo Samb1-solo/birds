@@ -20,8 +20,17 @@
             <p>We would love to hear about your bird sightings!</p>
         </div>
         <div class="form-input">
+            <label for="bird-category">Choose a bird category:</label>
+            <select id="bird-category" required>
+                <option value="">-- Select a category --</option>
+                <option value="herons">Herons</option>
+                <option value="local">Local Birds</option>
+                <option value="travelling">Travelling Birds</option>
+            </select>
+        </div>
+        <div class="form-input">
             <label for="user-name">Please tell us your name:</label>
-            <input type="text" placeholder="Your Name" id="user-name" required>
+            <input type="text" placeholder="Your Name" id="bird-username" required>
         </div>
         <div class="form-input">
             <label for="bird-name">Please tell us the breed of the bird:</label>

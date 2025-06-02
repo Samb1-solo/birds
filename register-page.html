@@ -9,24 +9,28 @@
     </head>
     <body>
         <main>
+        <form id="registration-form">
             <section class="login-page">
                 <h1>Registration</h1>
                 <div class="input-section">
-                    <label>Please enter your forename:
-                        <input type="text" placeholder="Forename">
+                    <label for="register-forename">Please enter your forename:
+                        <input type="text" placeholder="Forename" id="register-forename" required>
                     </label>
-                    <label>
+                    <label for="register-surname">
                         Please enter your surname:
-                        <input type="text" placeholder="Surname">
+                        <input type="text" placeholder="Surname" id="register-surname" required>
                     </label>
-                    <label>Please enter your forename:
-                        <input type="text" placeholder="Email">
+                    <label for="register-email">Please enter your email:
+                        <input type="email" placeholder="Email" id="register-email" required>
                     </label>
-                    <label>Create Username:
-                        <input type="text" placeholder="Username">
+                    <label for="register-username">Create username:
+                        <input type="text" placeholder="Username" id="register-username" required>
                     </label>
-                    <label>Create Password:
-                        <input type="text" placeholder="Password">
+                    <label for="register-password-1">Create password:
+                        <input type="password" placeholder="Create password" id="register-password-1" required>
+                    </label>
+                    <label for="register-password-2">Confirm password:
+                        <input type="password" placeholder="Confirm password" id="register-password-2" required>
                     </label>
                 </div>
                 <div class="btn-container">
@@ -40,6 +44,7 @@
                 </section>
                 
             </section>
+        </form>
         </main>
     </body>
 </html>
