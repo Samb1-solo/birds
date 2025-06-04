@@ -182,3 +182,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+const registerBtn = document.getElementById("register-submit");
+if (registerBtn) {
+    registerBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        saveData();
+    });
+}
+
