@@ -5,8 +5,13 @@ function sanitize(str) {
 }
 
 function isLoggedIn() {
-    return sessionStorage.getItem("loggedIn") === "true" || getCookie("loggedIn") === "true";
+    return (
+        sessionStorage.getItem("loggedIn") === "true" ||
+        localStorage.getItem("loggedIn") === "true" ||
+        getCookie("loggedIn") === "true"
+    );
 }
+
 
 function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -18,9 +23,11 @@ function getCookie(name) {
 function logout() {
     document.cookie = "loggedIn=; path=/; max-age=0";
     sessionStorage.clear();
+    localStorage.removeItem("loggedIn"); // NEW
     alert("You have successfully logged out!");
     window.location.href = "index.html";
 }
+
 
 function addBird() {
     window.location.href = "add-bird-page.html";
@@ -72,13 +79,13 @@ function login() {
     const user = users.find(u => u.username === username && atob(u.password) === password);
 
     if (user) {
-        sessionStorage.setItem("loggedIn", "true");
-        document.cookie = "loggedIn=true; path=/; max-age=3600";
-        alert(`Welcome, ${user.username}!`);
-        window.location.href = "birds-page.html";
-    } else {
-        alert("Invalid username or password.");
-    }
+    sessionStorage.setItem("loggedIn", "true");
+    localStorage.setItem("loggedIn", "true"); // NEW
+    document.cookie = "loggedIn=true; path=/; max-age=3600";
+    alert(`Welcome, ${user.username}!`);
+    window.location.href = "birds-page.html";
+}
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
