@@ -103,48 +103,48 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const submitBtn = document.getElementById("submit-bird");
+    const birdForm = document.getElementById("add-bird-form");
 
-    if (submitBtn) {
-        submitBtn.addEventListener("click", (event) => {
-            event.preventDefault();
+if (birdForm) {
+    birdForm.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-            const imageInput = document.getElementById("bird-image").files[0];
-            if (!imageInput) {
-                alert("Please upload an image.");
-                return;
-            }
+        const imageInput = document.getElementById("bird-image").files[0];
+        if (!imageInput) {
+            alert("Please upload an image.");
+            return;
+        }
 
-            const reader = new FileReader();
-            reader.onload = () => {
-                const birdData = {
-                    userName: sanitize(document.getElementById("bird-username").value),
-                    birdName: sanitize(document.getElementById("bird-name").value),
-                    birdPlace: sanitize(document.getElementById("bird-place").value),
-                    birdInfo: sanitize(document.getElementById("bird-info").value),
-                    category: document.getElementById("bird-category").value,
-                    image: reader.result
-                };
-
-                localStorage.setItem("birdContribution", JSON.stringify(birdData));
-                alert("Bird contribution submitted!");
-
-                const redirectMap = {
-                    herons: "heron-page.html",
-                    local: "local-birds.html",
-                    travelling: "travelling-birds.html"
-                };
-                window.location.href = redirectMap[birdData.category] || "birds-page.html";
+        const reader = new FileReader();
+        reader.onload = () => {
+            const birdData = {
+                userName: sanitize(document.getElementById("bird-username").value),
+                birdName: sanitize(document.getElementById("bird-name").value),
+                birdPlace: sanitize(document.getElementById("bird-place").value),
+                birdInfo: sanitize(document.getElementById("bird-info").value),
+                category: document.getElementById("bird-category").value,
+                image: reader.result
             };
 
-            reader.onerror = (err) => {
-                console.error("Image upload failed:", err);
-                alert("Failed to upload image. Try again.");
-            };
+            localStorage.setItem("birdContribution", JSON.stringify(birdData));
+            alert("Bird contribution submitted!");
 
-            reader.readAsDataURL(imageInput);
-        });
-    }
+            const redirectMap = {
+                herons: "heron-page.html",
+                local: "local-birds.html",
+                travelling: "travelling-birds.html"
+            };
+            window.location.href = redirectMap[birdData.category] || "birds-page.html";
+        };
+
+        reader.onerror = (err) => {
+            console.error("Image upload failed:", err);
+            alert("Failed to upload image. Try again.");
+        };
+
+        reader.readAsDataURL(imageInput);
+    });
+}
 
     const birdData = JSON.parse(localStorage.getItem("birdContribution"));
     if (birdData) {
