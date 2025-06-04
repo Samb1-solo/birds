@@ -85,3 +85,21 @@ body{
 #page-4:hover{
    background-color: beige; 
 }
+
+@media (max-width: 768px) {
+    .page-section {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    #page-title {
+        font-size: 1.5rem;
+        padding: 10px;
+    }
+
+    [id^="page-"] {
+        font-size: 1rem;
+        margin: 10px 0;
+        padding: 15px;
+    }
+}

@@ -40,3 +40,29 @@ body{
     min-height:100px;
     width:400px;
 }
+@media (max-width: 600px) {
+    .contribution-form {
+        padding: 15px;
+        border-width: 1px;
+    }
+
+    .bird-label {
+        max-width: 100%;
+    }
+
+    #bird-info {
+        width: 100%;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    select,
+    textarea {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+}
