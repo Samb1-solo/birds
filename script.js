@@ -181,12 +181,17 @@ document.addEventListener("DOMContentLoaded", () => {
             if (form) form.reset();
         });
     }
-});
-const registerBtn = document.getElementById("register-submit");
-if (registerBtn) {
-    registerBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        saveData();
-    });
+
+
+        const registerBtn = document.getElementById("register-submit");
+    if (registerBtn) {
+        registerBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            saveData();
+        });
 }
+
+});
+
+
 
