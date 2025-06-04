@@ -89,19 +89,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.addEventListener("click", (event) => {
-        if (event.target.id === "addBird") {
-            addBird();
+    if (event.target && event.target.id === "cancel-contribution") {
+        if (sessionStorage.getItem("loggedIn") === "true") {
+            localStorage.removeItem("birdContribution");
+            alert("Contribution canceled.");
+            window.location.href = "add-bird-page.html"; // or wherever you want to redirect
+        } else {
+            alert("You must be logged in to cancel a contribution.");
         }
-        if (event.target.id === "cancel-contribution") {
-            if (sessionStorage.getItem("loggedIn") === "true") {
-                localStorage.removeItem("birdContribution");
-                alert("Contribution canceled.");
-                location.reload();
-            } else {
-                alert("You must be logged in to cancel a contribution.");
-            }
-        }
-    });
+    }
+});
+
+
 
     const loginBtn = document.getElementById("submit");
     if (loginBtn) {
@@ -174,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (birdData) {
         const main = document.querySelector(`#${birdData.category}-main`);
         if (main) {
-            main.innerHTML = `
+            main.innerHTML += `
                 <h2>Bird Contribution Details</h2>
                 <p><strong>Name:</strong> ${sanitize(birdData.userName)}</p>
                 <p><strong>Species:</strong> ${sanitize(birdData.birdName)}</p>
