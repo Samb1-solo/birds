@@ -1,3 +1,86 @@
+function sanitize(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function isLoggedIn() {
+    return sessionStorage.getItem("loggedIn") === "true" || getCookie("loggedIn") === "true";
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+}
+
+function logout() {
+    document.cookie = "loggedIn=; path=/; max-age=0";
+    sessionStorage.clear();
+    alert("You have successfully logged out!");
+    window.location.href = "index.html";
+}
+
+function addBird() {
+    window.location.href = "add-bird-page.html";
+}
+
+function saveData() {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const password = document.getElementById("register-password-1").value;
+    const confirm = document.getElementById("register-password-2").value;
+
+    if (password.length < 8) {
+        alert("Password must contain at least 8 characters.");
+        return;
+    }
+
+    if (password !== confirm) {
+        alert("Passwords do not match.");
+        return;
+    }
+
+    const newUser = {
+        username: sanitize(document.getElementById("register-username").value.trim().toLowerCase()),
+        email: sanitize(document.getElementById("register-email").value.toLowerCase()),
+        forename: sanitize(document.getElementById("register-forename").value.toLowerCase()),
+        surname: sanitize(document.getElementById("register-surname").value.toLowerCase()),
+        password: btoa(password)
+    };
+
+    if (users.some(user => user.username === newUser.username)) {
+        alert("Username is already taken.");
+        return;
+    }
+
+    if (users.some(user => user.email === newUser.email)) {
+        alert("This email is already registered. Please log in.");
+        return;
+    }
+
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Registration successful! You can now log in.");
+    window.location.href = "login-page.html";
+}
+
+function login() {
+    const username = document.getElementById("login-username").value.toLowerCase();
+    const password = document.getElementById("login-password").value;
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(u => u.username === username && atob(u.password) === password);
+
+    if (user) {
+        sessionStorage.setItem("loggedIn", "true");
+        document.cookie = "loggedIn=true; path=/; max-age=3600";
+        alert(`Welcome, ${user.username}!`);
+        window.location.href = "birds-page.html";
+    } else {
+        alert("Invalid username or password.");
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     // Handle cancel contribution
     document.addEventListener("click", (event) => {
@@ -16,14 +99,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const output = document.getElementById("login-page");
     if (output && isLoggedIn()) {
         output.innerHTML = `
-            <p>You are still logged in. <a href="birds.html">Go to Birds Page</a>.</p>
+            <p>You are still logged in. <a href="birds-page.html">Go to Birds Page</a>.</p>
             <div>
                 <label>Click to contribute</label>
-                <button type="button" id="addBird">Add</button>
+                <button type="button" id="addBird">Add Contribution</button>
             </div>
         `;
     }
 
+    const addBirdBtn = document.getElementById("addBird");
+if (addBirdBtn) {
+    addBirdBtn.addEventListener("click", () => {
+        window.location.href = "add-bird-page.html";
+    });
+}
     // Password reset functionality
     const form = document.getElementById("password-form");
     if (form) {
