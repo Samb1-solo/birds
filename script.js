@@ -84,11 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>You are still logged in. <a href="birds.html">Go to Birds Page</a>.</p>
             <div>
                 <label>Click to contribute</label>
-                <button type="button" id="addBird">Add</button>
+                <button type="button" id="addBird">Add a contribution. Please! </button>
             </div>
         `;
     }
 
+    function addBird() {
+    window.location.href = "add-bird-page.html"; // or whatever page has the form
+}
     document.addEventListener("click", (event) => {
         if (event.target.id === "addBird") {
             addBird();
